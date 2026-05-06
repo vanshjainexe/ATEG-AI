@@ -1,12 +1,12 @@
-# 🎮 ATEG - AI Gaming Editor
+# ATEG - AI Gaming Editor
 
 **Transform your Valorant gameplay into cinematic masterpieces with one click!**
 
-ATEG is an intelligent AI-powered video editor designed specifically for gaming content creators. It automatically detects game moments (kills, clutches, highlights) and generates epic montages synchronized with your music.
+ATEG is an intelligent AI-powered video editor designed specifically for gaming content creators. It automatically detects game moments (kills, clutches, highlights) and generates epic montages synchronized to your favorite music.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
 - [Frontend Architecture](#frontend-architecture)
@@ -20,7 +20,7 @@ ATEG is an intelligent AI-powered video editor designed specifically for gaming 
 
 ---
 
-## 🎯 Overview
+## Overview
 
 ATEG combines cutting-edge AI with video processing to revolutionize how gamers create content. The platform:
 - **Detects gameplay moments** using AI (YOLO engine for object/action detection)
@@ -31,21 +31,21 @@ ATEG combines cutting-edge AI with video processing to revolutionize how gamers 
 
 ---
 
-## ✨ Features
+## Features
 
-- 🎬 **Automatic Highlight Detection** - AI detects kills, clutches, and epic moments
-- 🎵 **Music Synchronization** - Perfect sync between gameplay and audio
-- 📹 **Batch Processing** - Process multiple videos efficiently
-- 🎨 **Professional Output** - Cinema-quality montage generation
-- 🚀 **One-Click Creation** - Intuitive user interface
-- 💨 **Fast Processing** - Optimized backend for quick results
+- **Automatic Highlight Detection** - AI detects kills, clutches, and epic moments
+- **Music Synchronization** - Perfect sync between gameplay and audio
+- **Batch Processing** - Process multiple videos efficiently
+- **Professional Output** - Cinema-quality montage generation
+- **One-Click Creation** - Intuitive user interface
+- **Fast Processing** - Optimized backend for quick results
 
 ---
 
-## 🎨 Frontend Architecture
+## Frontend Architecture
 
 ### Overview
-The frontend is a modern **React + TypeScript** application built with Vite, featuring a sleek gaming-focused UI with smooth animations and responsive design.
+The frontend is a modern React and TypeScript application built with Vite, featuring a sleek gaming-focused UI with smooth animations and responsive design.
 
 ### Technology Stack
 - **React 18.3** - UI framework
@@ -71,7 +71,7 @@ The frontend is a modern **React + TypeScript** application built with Vite, fea
 - Call-to-action button
 - Creator credits section
 
-#### 3. **Editor.tsx** (`/src/components/Editor.tsx`) 🎥
+#### 3. **Editor.tsx** (`/src/components/Editor.tsx`)
 **The Core Feature**
 - **Video Upload Panel**: Drag-and-drop interface for gameplay videos
   - Accepts MP4, MOV, AVI formats (up to 500MB)
@@ -159,10 +159,10 @@ Result Display
 
 ---
 
-## 🔧 Backend Architecture
+## Backend Architecture
 
 ### Overview
-The backend is a **Python-based** processing engine built with FastAPI that handles video analysis, AI detection, and montage generation using the YOLO engine.
+The backend is a Python-based processing engine built with FastAPI that handles video analysis, AI detection, and montage generation using the YOLO engine.
 
 ### Technology Stack
 - **Python 3.8+** - Core language
@@ -365,133 +365,133 @@ Output Montage Video
 
 ---
 
-## 📊 System Flowchart
+## System Flowchart
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────────────┐
 │                    ATEG SYSTEM ARCHITECTURE                      │
-└─────────────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────────────┘
 
-                          🎮 USER INTERFACE
-                     (React + TypeScript + Vite)
+                           USER INTERFACE
+                      (React + TypeScript + Vite)
+                               │
+                     ┌─────────┴─────────┐
+                     ▼                   ▼
+             ┌──────────────┐    ┌──────────────┐
+             │ Video Upload │    │ Audio Upload │
+             │   Component  │    │   Component  │
+             └──────┬───────┘    └──────┬───────┘
+                    │                   │
+                    └───────────┬───────┘
+                                ▼
+                     ┌────────────────────┐
+                     │   Frontend State   │
+                     │ Management (React) │
+                     └────────┬───────────┘
                               │
-                    ┌─────────┴─────────┐
-                    ▼                   ▼
-            ┌──────────────┐    ┌──────────────┐
-            │ Video Upload │    │ Audio Upload │
-            │   Component  │    │   Component  │
-            └──────┬───────┘    └──────┬───────┘
-                   │                   │
-                   └───────────┬───────┘
-                               ▼
-                    ┌────────────────────┐
-                    │   Frontend State   │
-                    │ Management (React) │
-                    └────────┬───────────┘
-                             │
-                    ┌────────┴────────┐
+                     ┌────────┴────────┐
+                     │                 │
+                     ▼                 ▼
+             ┌──────────────┐  ┌──────────────┐
+             │ Upload Video │  │ Upload Audio │
+             │   Endpoint   │  │   Endpoint   │
+             └──────┬───────┘  └──────┬───────┘
                     │                 │
-                    ▼                 ▼
-            ┌──────────────┐  ┌──────────────┐
-            │ Upload Video │  │ Upload Audio │
-            │   Endpoint   │  │   Endpoint   │
-            └──────┬───────┘  └──────┬───────┘
-                   │                 │
-                   └────────────┬────┘
-                                │
-         ┌──────────────────────┴──────────────────────┐
-         │                                              │
-         ▼                                              ▼
-    ┌─────────────┐                           ┌─────────────────┐
-    │   FastAPI   │                           │   File Storage  │
-    │  Backend    │                           │   (Temp Dir)    │
-    └──────┬──────┘                           └─────────────────┘
-           │
-           ▼
-    ┌──────────────────────┐
-    │  Process Video Call  │
-    │  POST /process-video │
-    └──────┬───────────────┘
-           │
-    ┌──────┴──────────────────────────────────────────┐
-    │                                                  │
-    ▼                                                  ▼
-┌──────────────────┐                       ┌─────────────────────┐
-│ YOLO Detection   │                       │ Audio Analysis      │
-│ Engine           │                       │ (FFmpeg)            │
-│ (YOLOv8)         │                       │                     │
-│                  │                       │ - Tempo Analysis    │
-│ - Load Model     │                       │ - Beat Detection    │
-│ - Process Frames │                       │ - Sync Point Gen    │
-│ - Get Detections │                       └─────────────────────┘
-└────────┬─────────┘
-         │
-         ▼
-    ┌─────────────────────────┐
-    │ Highlight Detection     │
-    │                         │
-    │ - Identify Kills        │
-    │ - Detect Clutches       │
-    │ - Cluster Moments       │
-    │ - Score Importance      │
-    └────────┬────────────────┘
-             │
-             ▼
-    ┌─────────────────────────┐
-    │ Clip Extraction         │
-    │                         │
-    │ - Extract Segments      │
-    │ - Add Buffers           │
-    │ - Create Sub-clips      │
-    └────────┬────────────────┘
-             │
-             ▼
-    ┌─────────────────────────┐
-    │ Audio Synchronization   │
-    │                         │
-    │ - Match Clips to Beats  │
-    │ - Adjust Timing         │
-    │ - Normalize Audio       │
-    └────────┬────────────────┘
-             │
-             ▼
-    ┌─────────────────────────┐
-    │ Montage Assembly        │
-    │                         │
-    │ - Combine Clips         │
-    │ - Add Transitions       │
-    │ - Apply Effects         │
-    │ - Insert Audio          │
-    └────────┬────────────────┘
-             │
-             ▼
-    ┌─────────────────────────┐
-    │ Video Encoding          │
-    │ (FFmpeg)                │
-    │                         │
-    │ - Compress Video        │
-    │ - Generate Output       │
-    │ - Verify Quality        │
-    └────────┬────────────────┘
-             │
-             ▼
-    ┌─────────────────────────┐
-    │ Response to Frontend    │
-    │                         │
-    │ {                       │
-    │   status: "success",    │
-    │   kills_detected: 42,   │
-    │   clips_generated: 8,   │
-    │   output_path: "..."    │
-    │ }                       │
-    └─────────────────────────┘
-             │
-             ▼
-    ┌───────────────────────────────┐
-    │ Frontend Display Results      │
-    │ Download Montage              │
-    │ Show Stats                    │
-    └───────────────────────────────┘
+                    └────────────┬────┘
+                                 │
+          ┌──────────────────────┴──────────────────────┐
+          │                                              │
+          ▼                                              ▼
+     ┌─────────────┐                           ┌─────────────────┐
+     │   FastAPI   │                           │   File Storage  │
+     │  Backend    │                           │   (Temp Dir)    │
+     └──────┬──────┘                           └─────────────────┘
+            │
+            ▼
+     ┌──────────────────────┐
+     │  Process Video Call  │
+     │  POST /process-video │
+     └──────┬───────────────┘
+            │
+     ┌──────┴──────────────────────────────────────────┐
+     │                                                  │
+     ▼                                                  ▼
+ ┌──────────────────┐                       ┌─────────────────────┐
+ │ YOLO Detection   │                       │ Audio Analysis      │
+ │ Engine           │                       │ (FFmpeg)            │
+ │ (YOLOv8)         │                       │                     │
+ │                  │                       │ - Tempo Analysis    │
+ │ - Load Model     │                       │ - Beat Detection    │
+ │ - Process Frames │                       │ - Sync Point Gen    │
+ │ - Get Detections │                       └─────────────────────┘
+ └────────┬─────────┘
+          │
+          ▼
+     ┌─────────────────────────┐
+     │ Highlight Detection     │
+     │                         │
+     │ - Identify Kills        │
+     │ - Detect Clutches       │
+     │ - Cluster Moments       │
+     │ - Score Importance      │
+     └────────┬────────────────┘
+              │
+              ▼
+     ┌─────────────────────────┐
+     │ Clip Extraction         │
+     │                         │
+     │ - Extract Segments      │
+     │ - Add Buffers           │
+     │ - Create Sub-clips      │
+     └────────┬────────────────┘
+              │
+              ▼
+     ┌─────────────────────────┐
+     │ Audio Synchronization   │
+     │                         │
+     │ - Match Clips to Beats  │
+     │ - Adjust Timing         │
+     │ - Normalize Audio       │
+     └────────┬────────────────┘
+              │
+              ▼
+     ┌─────────────────────────┐
+     │ Montage Assembly        │
+     │                         │
+     │ - Combine Clips         │
+     │ - Add Transitions       │
+     │ - Apply Effects         │
+     │ - Insert Audio          │
+     └────────┬────────────────┘
+              │
+              ▼
+     ┌─────────────────────────┐
+     │ Video Encoding          │
+     │ (FFmpeg)                │
+     │                         │
+     │ - Compress Video        │
+     │ - Generate Output       │
+     │ - Verify Quality        │
+     └────────┬────────────────┘
+              │
+              ▼
+     ┌─────────────────────────┐
+     │ Response to Frontend    │
+     │                         │
+     │ {                       │
+     │   status: "success",    │
+     │   kills_detected: 42,   │
+     │   clips_generated: 8,   │
+     │   output_path: "..."    │
+     │ }                       │
+     └─────────────────────────┘
+              │
+              ▼
+     ┌───────────────────────────────┐
+     │ Frontend Display Results      │
+     │ Download Montage              │
+     │ Show Stats                    │
+     └───────────────────────────────┘
 ```
 
 ### Data Flow Summary
@@ -555,7 +555,7 @@ Output Stage:
 
 ---
 
-## 💻 Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 
@@ -584,7 +584,7 @@ cd ATEG-AI
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 ### Step 1: Setup Frontend
 
@@ -649,7 +649,7 @@ ffmpeg -f lavfi -i testsrc=s=1280x720:d=10 -pix_fmt yuv420p test_video.mp4
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ATEG-AI/
@@ -680,7 +680,7 @@ ATEG-AI/
 │   │   │   ├── FAQ.tsx                # FAQ section
 │   │   │   ├── Testimonials.tsx       # User testimonials
 │   │   │   ├── Pricing.tsx            # Pricing plans
-│   │   │   ├── Editor.tsx             # Main video editor ⭐
+│   │   │   ├── Editor.tsx             # Main video editor
 │   │   │   ├── ProcessPanel.tsx       # Processing UI
 │   │   │   ├── GradientPipe.tsx       # Gradient animations
 │   │   │   ├── CTA.tsx                # Call-to-action
@@ -697,7 +697,7 @@ ATEG-AI/
 └── backend code/                      # Python Backend
     └── backend-main/
         └── script/
-            └── main.py                # Main processing engine ⭐
+            └── main.py                # Main processing engine
                 ├── Video Upload Handler
                 ├── YOLO Detection Engine
                 ├── Highlight Analyzer
@@ -710,7 +710,7 @@ ATEG-AI/
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Frontend Stack
 | Technology | Purpose |
@@ -737,7 +737,7 @@ ATEG-AI/
 
 ---
 
-## 🎮 YOLO Engine Specifications
+## YOLO Engine Specifications
 
 ### Model Configuration
 - **Model Type**: YOLOv8 Medium (yolov8m.pt)
@@ -754,7 +754,7 @@ ATEG-AI/
 
 ---
 
-## 📝 Configuration
+## Configuration
 
 ### Frontend Configuration
 ```bash
@@ -775,7 +775,7 @@ OUTPUT_DIR=./montages
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Issue: "Cannot find module 'react-router-dom'"
 ```bash
@@ -814,7 +814,7 @@ uvicorn script.main:app --port 8001
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -826,31 +826,31 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📄 License
+## License
 
 This project is open source and available under the MIT License.
 
 ---
 
-## 👥 Credits
+## Credits
 
-Made with ❤️ by:
+Made with dedication by:
 - **Shikhar** - [GitHub](https://github.com/ShikharSomething)
 - **Vansh** - [GitHub](https://github.com/VANSHJAIN-exe)
 - **Vedant** - [GitHub](https://github.com/Ved235)
 
 ---
 
-## 📞 Support & Contact
+## Support & Contact
 
 For issues, questions, or suggestions:
-- 📧 Open an Issue on GitHub
-- 💬 Join our community discussions
-- 🎮 Check FAQ section for common questions
+- Open an Issue on GitHub
+- Join our community discussions
+- Check FAQ section for common questions
 
 ---
 
-## 🚀 Future Roadmap
+## Future Roadmap
 
 - [ ] Support for other games (CS:GO, Valorant, Apex, etc.)
 - [ ] Advanced highlighting with custom filters
@@ -863,4 +863,4 @@ For issues, questions, or suggestions:
 
 ---
 
-**Happy montage creating! 🎬🎮**
+**Happy montage creating!**
